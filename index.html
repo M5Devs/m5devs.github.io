@@ -19,6 +19,7 @@
             --text-secondary: #8b8b9e;
             --text-muted: #5a5a6e;
             --border: #1f1f2e;
+            --transition-butter: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -132,7 +133,7 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: var(--transition-butter);
             position: relative;
         }
         .nav-links a::after {
@@ -143,7 +144,7 @@
             width: 0;
             height: 2px;
             background: var(--accent-cyan);
-            transition: width 0.3s;
+            transition: var(--transition-butter);
         }
         .nav-links a:hover {
             color: var(--accent-cyan);
@@ -245,7 +246,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition-butter);
             position: relative;
             overflow: hidden;
             text-decoration: none;
@@ -265,8 +266,8 @@
             left: 100%;
         }
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), 0 0 20px rgba(168, 85, 247, 0.3);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4), 0 0 30px rgba(168, 85, 247, 0.4);
         }
         .btn-secondary {
             padding: 14px 32px;
@@ -277,14 +278,15 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition-butter);
             text-decoration: none;
             display: inline-block;
         }
         .btn-secondary:hover {
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.1);
         }
 
         /* Section Styles */
@@ -320,6 +322,379 @@
             color: var(--text-secondary);
             max-width: 600px;
             line-height: 1.7;
+        }
+
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .advantage-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(22, 22, 30, 0.7) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: var(--transition-butter);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: var(--transition-butter);
+            z-index: -1;
+        }
+        .advantage-card.purple::before {
+            background: radial-gradient(circle at 10% 10%, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+        }
+        .advantage-card.pink::before {
+            background: radial-gradient(circle at 10% 10%, rgba(236, 72, 153, 0.15) 0%, transparent 60%);
+        }
+        .advantage-card.green::before {
+            background: radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.15) 0%, transparent 60%);
+        }
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.05), inset 0 0 15px rgba(0, 240, 255, 0.05);
+        }
+        .advantage-card.purple:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.05), inset 0 0 15px rgba(168, 85, 247, 0.05);
+        }
+        .advantage-card.pink:hover {
+            border-color: var(--accent-pink);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.05), inset 0 0 15px rgba(236, 72, 153, 0.05);
+        }
+        .advantage-card.green:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.05), inset 0 0 15px rgba(34, 197, 94, 0.05);
+        }
+        .advantage-card:hover::before {
+            opacity: 1;
+        }
+        .advantage-icon {
+            font-size: 40px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-butter);
+        }
+        .advantage-card:hover .advantage-icon {
+            transform: scale(1.1) rotate(5deg);
+            border-color: inherit;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .advantage-title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .advantage-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .advantage-badge {
+            align-self: flex-start;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(0, 240, 255, 0.06);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+        .advantage-card.purple .advantage-badge {
+            background: rgba(168, 85, 247, 0.06);
+            color: var(--accent-purple);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .advantage-card.pink .advantage-badge {
+            background: rgba(236, 72, 153, 0.06);
+            color: var(--accent-pink);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+        .advantage-card.green .advantage-badge {
+            background: rgba(34, 197, 94, 0.06);
+            color: var(--accent-green);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        /* Simulator Styles */
+        .simulator-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .simulator-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+        }
+        .simulator-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            min-height: 500px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .sim-sidebar {
+            background: rgba(10, 10, 15, 0.5);
+            border-right: 1px solid var(--border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .sim-sidebar-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        .sim-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            padding: 16px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition-butter);
+        }
+        .sim-btn .sim-icon {
+            font-size: 18px;
+            transition: var(--transition-butter);
+        }
+        .sim-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        .sim-btn.active {
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            border-color: rgba(0, 240, 255, 0.15);
+            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.05);
+        }
+        .sim-btn.active.purple {
+            color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.05);
+            border-color: rgba(168, 85, 247, 0.15);
+            box-shadow: inset 0 0 10px rgba(168, 85, 247, 0.05);
+        }
+        .sim-btn.active.pink {
+            color: var(--accent-pink);
+            background: rgba(236, 72, 153, 0.05);
+            border-color: rgba(236, 72, 153, 0.15);
+            box-shadow: inset 0 0 10px rgba(236, 72, 153, 0.05);
+        }
+        .sim-btn.active.green {
+            color: var(--accent-green);
+            background: rgba(34, 197, 94, 0.05);
+            border-color: rgba(34, 197, 94, 0.15);
+            box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.05);
+        }
+        .sim-btn:hover .sim-icon {
+            transform: scale(1.2);
+        }
+        .sim-main {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: radial-gradient(circle at 90% 90%, rgba(22, 22, 30, 0.5) 0%, rgba(10, 10, 15, 0.2) 100%);
+        }
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sim-tag-pill {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+        }
+        .sim-tag-pill.purple {
+            background: rgba(168, 85, 247, 0.05);
+            color: var(--accent-purple);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+        }
+        .sim-tag-pill.pink {
+            background: rgba(236, 72, 153, 0.05);
+            color: var(--accent-pink);
+            border: 1px solid rgba(236, 72, 153, 0.15);
+        }
+        .sim-tag-pill.green {
+            background: rgba(34, 197, 94, 0.05);
+            color: var(--accent-green);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+        }
+        .sim-interactive-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex-grow: 1;
+        }
+        .sim-pane {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .sim-pane-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .sim-console {
+            background: #07070a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 300px;
+            color: var(--text-secondary);
+        }
+        .sim-console-line {
+            margin-bottom: 6px;
+            display: flex;
+            gap: 8px;
+        }
+        .sim-console-prompt {
+            color: var(--accent-purple);
+        }
+        .sim-console-output {
+            color: var(--text-primary);
+        }
+        .sim-visual-display {
+            background: #0d0d14;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition-butter);
+        }
+        .sim-art-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 15, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition-butter);
+        }
+        .sim-art-overlay.active {
+            opacity: 1;
+        }
+        .sim-art-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .sim-art-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent-cyan);
+        }
+        .sim-trigger-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--bg-primary);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-butter);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .sim-trigger-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+        }
+        .sim-trigger-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .sim-waveform-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 60px;
+            width: 100%;
+        }
+        .sim-wave-bar {
+            width: 4px;
+            height: 10px;
+            background: var(--accent-pink);
+            border-radius: 2px;
+            transition: var(--transition-butter);
+        }
+        .sim-wave-bar.playing {
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes bounce {
+            0% { height: 10px; }
+            100% { height: 60px; }
         }
 
         /* About Section */
@@ -419,7 +794,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s;
+            transition: var(--transition-butter);
             position: relative;
         }
         .project-card::before {
@@ -431,16 +806,16 @@
             height: 100%;
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(168, 85, 247, 0.1));
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: var(--transition-butter);
             z-index: 0;
         }
         .project-card:hover::before {
             opacity: 1;
         }
         .project-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.02);
             border-color: var(--accent-cyan);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15);
         }
         .project-header {
             padding: 30px 30px 20px;
@@ -557,7 +932,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 30px;
-            transition: all 0.4s;
+            transition: var(--transition-butter);
             position: relative;
             overflow: hidden;
         }
@@ -571,7 +946,7 @@
             background: conic-gradient(from 0deg, transparent, var(--accent-cyan), transparent 30%);
             animation: rotate 4s linear infinite;
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: var(--transition-butter);
         }
         @keyframes rotate {
             100% { transform: rotate(360deg); }
@@ -580,8 +955,9 @@
             opacity: 0.1;
         }
         .model-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.02);
             border-color: var(--accent-purple);
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.15);
         }
         .model-card > * {
             position: relative;
@@ -634,14 +1010,14 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 30px;
-            transition: all 0.4s;
+            transition: var(--transition-butter);
             position: relative;
             overflow: hidden;
         }
         .dataset-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.02);
             border-color: var(--accent-green);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.15);
         }
         .dataset-type {
             font-family: 'JetBrains Mono', monospace;
@@ -687,15 +1063,15 @@
             border-radius: 12px;
             padding: 24px;
             text-align: center;
-            transition: all 0.3s;
+            transition: var(--transition-butter);
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
         .stack-item:hover {
             border-color: var(--accent-cyan);
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.25);
         }
         .stack-item .icon {
             font-size: 36px;
@@ -746,11 +1122,12 @@
             border-radius: 12px;
             padding: 30px;
             text-align: center;
-            transition: all 0.3s;
+            transition: var(--transition-butter);
         }
         .stat-box:hover {
             border-color: var(--accent-cyan);
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15);
         }
         .stat-number {
             font-family: 'JetBrains Mono', monospace;
@@ -867,6 +1244,7 @@
     <nav>
         <div class="logo">M5_DEV</div>
         <ul class="nav-links">
+            <li><a href="#advantages">Advantages</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#models">Models</a></li>
@@ -892,6 +1270,119 @@
                 <a href="#projects" class="btn-primary" onclick="event.preventDefault(); scrollToSection('projects')">View Projects</a>
                 <a href="https://github.com/m5develop" target="_blank" class="btn-secondary">GitHub</a>
                 <a href="https://huggingface.co/M5-Dev" target="_blank" class="btn-secondary">HuggingFace</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="advantages">
+        <div class="section-header reveal">
+            <div class="section-tag">advantages</div>
+            <h2 class="section-title">The M5 Advantage</h2>
+            <p class="section-desc">Pioneering solutions at the intersection of high-speed artificial intelligence and custom generative aesthetics.</p>
+        </div>
+        <div class="advantages-grid reveal">
+            <!-- Advantage 1 -->
+            <div class="advantage-card">
+                <div class="advantage-badge">GENERATIVE ART</div>
+                <div class="advantage-icon">🎨</div>
+                <h3 class="advantage-title">Deep Anime Art Synthesis</h3>
+                <p class="advantage-desc">
+                    Unlike standard generative coders, we create bleeding-edge SDXL LoRAs and Illustrious-based models (like MikuPix2 and YumeXL), pushing stylized aesthetics to their absolute limits.
+                </p>
+            </div>
+
+            <!-- Advantage 2 -->
+            <div class="advantage-card purple">
+                <div class="advantage-badge purple">HIGH-SPEED INFERENCE</div>
+                <div class="advantage-icon">⚡</div>
+                <h3 class="advantage-title">Real-Time Routing & Groq</h3>
+                <p class="advantage-desc">
+                    Every chatbot and automation incorporates custom smart model routing with lightning-fast Groq API inference, delivering response times measured in milliseconds.
+                </p>
+            </div>
+
+            <!-- Advantage 3 -->
+            <div class="advantage-card pink">
+                <div class="advantage-badge pink">VOICE CLONING</div>
+                <div class="advantage-icon">🎙️</div>
+                <h3 class="advantage-title">Retrieval-Based Voice (RVC)</h3>
+                <p class="advantage-desc">
+                    Advanced custom-trained voice cloning architectures (like Miku RVC V2) with scary natural-sounding fidelity, optimal sample rates, and seamless platform deployment.
+                </p>
+            </div>
+
+            <!-- Advantage 4 -->
+            <div class="advantage-card green">
+                <div class="advantage-badge green">UTILITIES & SYSTEM</div>
+                <div class="advantage-icon">🐧</div>
+                <h3 class="advantage-title">System Native Engineering</h3>
+                <p class="advantage-desc">
+                    Crafting highly optimized developer experiences like MikuFetch — lightweight, customized, and native tools built with zero unnecessary overhead.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive M5 Sandbox Section -->
+    <section class="simulator-section">
+        <div class="section-header reveal">
+            <div class="section-tag">interactive simulator</div>
+            <h2 class="section-title">Experience the AI Pipeline</h2>
+            <p class="section-desc">Test real M5 capabilities inside this hyper-responsive sandbox environment. See routing, rendering, and processing speed firsthand.</p>
+        </div>
+
+        <div class="simulator-container reveal">
+            <!-- Sidebar Selection -->
+            <div class="sim-sidebar">
+                <div class="sim-sidebar-title">Select Pipeline</div>
+                <button class="sim-btn active" onclick="switchSim('art', this)">
+                    <span class="sim-icon">🎨</span> Anime Gen (YumeXL)
+                </button>
+                <button class="sim-btn purple" onclick="switchSim('routing', this)">
+                    <span class="sim-icon">⚡</span> Groq Routing
+                </button>
+                <button class="sim-btn pink" onclick="switchSim('voice', this)">
+                    <span class="sim-icon">🎙️</span> Miku Voice Cloning
+                </button>
+                <button class="sim-btn green" onclick="switchSim('system', this)">
+                    <span class="sim-icon">🐧</span> MikuFetch CLI
+                </button>
+            </div>
+
+            <!-- Main Interactive Content Area -->
+            <div class="sim-main">
+                <div class="sim-header">
+                    <h3 id="sim-title" style="font-size: 24px; font-weight: 800;">Anime Generation Sandbox</h3>
+                    <span id="sim-tag" class="sim-tag-pill">MODEL: YUMEXL v2.0</span>
+                </div>
+
+                <div class="sim-interactive-area">
+                    <!-- Console/Prompt Input & Output -->
+                    <div class="sim-pane">
+                        <span class="sim-pane-title">Simulation Logs</span>
+                        <div class="sim-console" id="sim-console">
+                            <div class="sim-console-line">
+                                <span class="sim-console-prompt">m5@dev:~$</span>
+                                <span class="sim-console-output">Ready to execute M5-Dev pipeline.</span>
+                            </div>
+                        </div>
+                        <button class="sim-trigger-btn" id="sim-trigger" onclick="runSimulation()">
+                            <span>▶ Run Simulation</span>
+                        </button>
+                    </div>
+
+                    <!-- Visual Output/Media Display -->
+                    <div class="sim-pane">
+                        <span class="sim-pane-title">Live Preview Output</span>
+                        <div class="sim-visual-display" id="sim-display" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop');">
+                            <div class="sim-art-overlay active" id="sim-overlay">
+                                <div class="sim-art-title" id="sim-art-title">Ready for prompt...</div>
+                                <div class="sim-art-meta" id="sim-art-meta">Click Run to generate stylized artwork</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1278,6 +1769,198 @@
     <div class="easter-egg">Try the Konami Code ↑↑↓↓←→←→BA</div>
 
     <script>
+        // Interactive Simulator State and Data
+        let currentSim = 'art';
+        const simData = {
+            art: {
+                title: 'Anime Generation Sandbox',
+                tag: 'MODEL: YUMEXL v2.0',
+                pillClass: 'sim-tag-pill',
+                triggerText: '▶ Generate Stylized Art',
+                image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop',
+                overlayTitle: 'Ready to Synthesize',
+                overlayMeta: 'Prompt: "Hatsune Miku, digital painting, masterpiece, futuristic neon city"',
+                logs: [
+                    'Initializing YumeXL v2.0 weights...',
+                    'Applying MikuPix2 LoRA (strength: 0.85)...',
+                    'Compiling pipeline target with TensorRT...',
+                    'Generating latents with 28 Euler steps...',
+                    'Denoising stylized render...',
+                    'Inference completed in 1.42s!'
+                ]
+            },
+            routing: {
+                title: 'High-Speed Groq Routing',
+                tag: 'INFERENCE: GROQ LLaMA 3 70B',
+                pillClass: 'sim-tag-pill purple',
+                triggerText: '⚡ Simulate Live Query',
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop',
+                overlayTitle: 'Smart AI Routing Active',
+                overlayMeta: 'Response Latency: 0.08 seconds (94 tokens/sec)',
+                logs: [
+                    'Incoming query detected: "Deploy Discord bot to production"',
+                    'Analyzing intent vectors...',
+                    'Intent mapped to: DEV_SYSTEM_OPS',
+                    'Hot-routing to Groq LLama-3-70B pipeline...',
+                    'Generating system instructions...',
+                    'Stream finished: response delivered in 82ms.'
+                ]
+            },
+            voice: {
+                title: 'Miku Voice Cloning (RVC)',
+                tag: 'VOICE MODEL: MIKU RVC V2',
+                pillClass: 'sim-tag-pill pink',
+                triggerText: '🎙️ Synthesize Voice Output',
+                image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd6a?q=80&w=600&auto=format&fit=crop',
+                overlayTitle: 'Retrieval Synthesis Complete',
+                overlayMeta: 'Sample Rate: 48kHz | Model: v2-high-fidelity',
+                logs: [
+                    'Loading RVC Voice Index...',
+                    'Processing input source audio features...',
+                    'Applying pitch extraction (Harvest algorithm)...',
+                    'Synthesizing target vocal characteristics...',
+                    'Normalizing voice timbre and formants...',
+                    'Voicing synthesized: audio ready for playback.'
+                ]
+            },
+            system: {
+                title: 'MikuFetch CLI Simulator',
+                tag: 'SYSTEM: CLI UTILITY',
+                pillClass: 'sim-tag-pill green',
+                triggerText: '🐧 Execute MikuFetch CLI',
+                image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=600&auto=format&fit=crop',
+                overlayTitle: 'MikuFetch v1.4.2 Executed',
+                overlayMeta: 'Target System: Arch Linux x86_64',
+                logs: [
+                    'Scanning hardware metrics...',
+                    'Parsing active kernel configurations...',
+                    'Reading Vocaloid fan custom assets...',
+                    'Rendering Hatsune Miku ASCII Art...',
+                    'Printing system specifications to stdout...',
+                    'CLI fetch succeeded in 4ms.'
+                ]
+            }
+        };
+
+        function switchSim(type, btn) {
+            // Remove active states
+            document.querySelectorAll('.sim-btn').forEach(b => b.className = b.className.replace(/\bactive\b/g, '').trim());
+            // Highlight current button
+            btn.classList.add('active');
+
+            currentSim = type;
+            const data = simData[type];
+
+            // Set fields smoothly
+            document.getElementById('sim-title').textContent = data.title;
+            const tagEl = document.getElementById('sim-tag');
+            tagEl.className = data.pillClass;
+            tagEl.textContent = data.tag;
+
+            const triggerBtn = document.getElementById('sim-trigger');
+            triggerBtn.className = 'sim-trigger-btn ' + (type === 'art' ? '' : type);
+            triggerBtn.innerHTML = `<span>${data.triggerText}</span>`;
+
+            // Reset Console
+            const consoleEl = document.getElementById('sim-console');
+            consoleEl.innerHTML = `
+                <div class="sim-console-line">
+                    <span class="sim-console-prompt">m5@dev:~$</span>
+                    <span class="sim-console-output">Switched to ${data.title} simulator.</span>
+                </div>
+            `;
+
+            // Reset visual display preview
+            const displayEl = document.getElementById('sim-display');
+            displayEl.style.backgroundImage = `url('${data.image}')`;
+
+            const overlay = document.getElementById('sim-overlay');
+            overlay.classList.add('active');
+            document.getElementById('sim-art-title').textContent = 'Ready for action';
+            document.getElementById('sim-art-meta').textContent = 'Click run to start pipeline';
+        }
+
+        async function runSimulation() {
+            const triggerBtn = document.getElementById('sim-trigger');
+            triggerBtn.disabled = true;
+
+            const consoleEl = document.getElementById('sim-console');
+            consoleEl.innerHTML = ''; // Clear logs for execution
+
+            const data = simData[currentSim];
+
+            // If voice, let's render a custom waveform inside visual display!
+            const displayEl = document.getElementById('sim-display');
+            const overlay = document.getElementById('sim-overlay');
+
+            if (currentSim === 'voice') {
+                overlay.classList.remove('active');
+                displayEl.innerHTML = `
+                    <div class="sim-waveform-container" id="sim-waveform">
+                        ${Array.from({length: 15}).map(() => `<div class="sim-wave-bar playing"></div>`).join('')}
+                    </div>
+                `;
+            } else {
+                overlay.classList.remove('active');
+            }
+
+            // Type logs progressively
+            for (let i = 0; i < data.logs.length; i++) {
+                const line = document.createElement('div');
+                line.className = 'sim-console-line';
+                line.innerHTML = `
+                    <span class="sim-console-prompt">></span>
+                    <span class="sim-console-output">${data.logs[i]}</span>
+                `;
+                consoleEl.appendChild(line);
+                consoleEl.scrollTop = consoleEl.scrollHeight;
+                await new Promise(resolve => setTimeout(resolve, 350));
+            }
+
+            // Post action details
+            if (currentSim === 'voice') {
+                displayEl.innerHTML = `
+                    <div class="sim-waveform-container">
+                        ${Array.from({length: 15}).map(() => `<div class="sim-wave-bar"></div>`).join('')}
+                    </div>
+                    <div class="sim-art-overlay active" id="sim-overlay">
+                        <div class="sim-art-title">${data.overlayTitle}</div>
+                        <div class="sim-art-meta">${data.overlayMeta}</div>
+                    </div>
+                `;
+            } else if (currentSim === 'system') {
+                // Render real miniature Neofetch alternative mockup!
+                displayEl.innerHTML = `
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-cyan); text-align: left; width: 85%; line-height: 1.3;">
+                        <span style="color: var(--accent-purple); font-weight: 800;">m5@arch-linux</span><br>
+                        ---------------------<br>
+                        OS: Arch Linux x86_64<br>
+                        Host: MikuFetch Simulator<br>
+                        Kernel: 6.8.2-arch1-1<br>
+                        Uptime: 39 mins<br>
+                        Shell: zsh 5.9<br>
+                        Theme: Hatsune Miku Teal<br>
+                        Memory: 1420MiB / 16384MiB<br>
+                        Status: Super Buttery 🧈
+                    </div>
+                    <div class="sim-art-overlay active" id="sim-overlay">
+                        <div class="sim-art-title">${data.overlayTitle}</div>
+                        <div class="sim-art-meta">${data.overlayMeta}</div>
+                    </div>
+                `;
+            } else {
+                // Re-apply original markup if needed
+                displayEl.innerHTML = `
+                    <div class="sim-art-overlay active" id="sim-overlay">
+                        <div class="sim-art-title" id="sim-art-title">${data.overlayTitle}</div>
+                        <div class="sim-art-meta" id="sim-art-meta">${data.overlayMeta}</div>
+                    </div>
+                `;
+            }
+
+            triggerBtn.disabled = false;
+        }
+
         // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
