@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# No crawl-delay: there is one page, keep it simple.
+
+Sitemap: https://m5devs.github.io/sitemap.xml
