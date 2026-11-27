@@ -48,7 +48,10 @@
       "foundingDate": "2026-03-21",
       "sameAs": [
         "https://github.com/M5Devs",
-        "https://huggingface.co/M5-Dev"
+        "https://huggingface.co/M5-Dev",
+        "https://x.com/M5Devs",
+        "https://dev.to/m5dev",
+        "https://www.youtube.com/@m5devs"
       ]
     }
     </script>
@@ -234,6 +237,45 @@
             letter-spacing: .1em;
             text-transform: uppercase;
             transition: all .3s var(--ease);
+        }
+
+        .nav-social, .hero-social { display: flex; align-items: center; }
+        .nav-social { gap: 6px; }
+        .nav-social a, .hero-social a {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--line-2);
+            border-radius: 2px;
+            color: var(--text-2);
+            transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+        }
+        .nav-social a:hover, .hero-social a:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            background: rgba(0, 240, 255, .06);
+        }
+        .nav-social svg, .hero-social svg { width: 13px; height: 13px; fill: currentColor; }
+        .nav-social .ico-text, .hero-social .ico-text {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            font-weight: 700;
+            letter-spacing: .02em;
+            line-height: 1;
+            text-transform: lowercase;
+        }
+        .hero-social .ico-text { font-size: 9.5px; }
+        .hero-social { justify-content: center; gap: 8px; margin-top: 20px; }
+        .hero-social a { width: 32px; height: 32px; border-color: var(--line); }
+        .hero-social svg { width: 14px; height: 14px; }
+        .hero-social-label {
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-right: 6px;
         }
         .nav-cta:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 20px rgba(0, 240, 255, .16); }
         .menu-btn {
@@ -1065,7 +1107,7 @@
             .hero h1 { font-size: clamp(48px, 13vw, 92px); }
         }
         @media (max-width: 900px) {
-            .nav-links, .nav-cta { display: none; }
+            .nav-links, .nav-cta, .nav-social { display: none; }
             .menu-btn { display: block; }
             .about { grid-template-columns: 1fr; }
             .pipe { grid-template-columns: minmax(0, 1fr); }
@@ -1139,6 +1181,11 @@
             </nav>
 
             <div class="nav-actions">
+                <nav class="nav-social" aria-label="M5 Dev on other platforms">
+                    <a href="https://x.com/M5Devs" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://dev.to/m5dev" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on Dev.to" title="Dev.to"><span class="ico-text" aria-hidden="true">dev</span></a>
+                    <a href="https://www.youtube.com/@m5devs" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </nav>
                 <a class="nav-cta" href="https://github.com/M5Devs" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
                 <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mmenu" aria-label="Open menu">
                     <span></span><span></span><span></span>
@@ -1157,6 +1204,9 @@
             <li><a href="#about">About <span>06</span></a></li>
             <li><a href="https://github.com/M5Devs" target="_blank" rel="noopener noreferrer">GitHub <span>&#8599;</span></a></li>
             <li><a href="https://huggingface.co/M5-Dev" target="_blank" rel="noopener noreferrer">Hugging Face <span>&#8599;</span></a></li>
+            <li><a href="https://x.com/M5Devs" target="_blank" rel="noopener noreferrer">X <span>&#8599;</span></a></li>
+            <li><a href="https://dev.to/m5dev" target="_blank" rel="noopener noreferrer">Dev.to <span>&#8599;</span></a></li>
+            <li><a href="https://www.youtube.com/@m5devs" target="_blank" rel="noopener noreferrer">YouTube <span>&#8599;</span></a></li>
         </ul>
     </div>
 
@@ -1198,6 +1248,13 @@
                     <span>364 stars</span>
                     <span>7,543 J2ME games</span>
                 </div>
+
+                <nav class="hero-social" aria-label="Elsewhere">
+                    <span class="hero-social-label">Elsewhere</span>
+                    <a href="https://x.com/M5Devs" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://dev.to/m5dev" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on Dev.to" title="Dev.to"><span class="ico-text" aria-hidden="true">dev</span></a>
+                    <a href="https://www.youtube.com/@m5devs" target="_blank" rel="noopener noreferrer" aria-label="M5 Dev on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </nav>
             </div>
 
             <a class="scroll-hint" href="#projects" aria-label="Scroll to projects">
@@ -1913,6 +1970,9 @@ open for freelance
                 <nav class="foot-links" aria-label="Elsewhere">
                     <a href="https://github.com/M5Devs" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
                     <a href="https://huggingface.co/M5-Dev" target="_blank" rel="noopener noreferrer">Hugging Face &#8599;</a>
+                    <a href="https://x.com/M5Devs" target="_blank" rel="noopener noreferrer">X &#8599;</a>
+                    <a href="https://dev.to/m5dev" target="_blank" rel="noopener noreferrer">Dev.to &#8599;</a>
+                    <a href="https://www.youtube.com/@m5devs" target="_blank" rel="noopener noreferrer">YouTube &#8599;</a>
                     <a href="https://github.com/M5Devs/OpenROM" target="_blank" rel="noopener noreferrer">OpenROM &#8599;</a>
                     <a href="https://github.com/M5Devs/OpenROM/releases/latest" target="_blank" rel="noopener noreferrer">Releases &#8599;</a>
                     <a href="https://discord.gg/FYEjpcFYXc" target="_blank" rel="noopener noreferrer">Discord &#8599;</a>
